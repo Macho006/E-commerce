@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from '@/components/shared/hero'
 import CategoriesCard from '@/components/home/categories-card'
 import { v4 as uuidv4 } from 'uuid';
+import Products from "@/components/product/NewArrivalsSection"
 
 
 let categories = [
@@ -67,6 +68,7 @@ export default function HomePage() {
           />
         ))}
       </section>
+      <Products />
     </div>
   )
 }
