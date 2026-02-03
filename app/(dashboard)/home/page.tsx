@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ProductCard } from "@/components/shared/ProductCard";
 import { Footer } from "@/components/shared/Footer";
 import Products from "@/components/product/NewArrivalsSection"
+import Category from '@/components/category/page';
 
 
 let categories = [
@@ -114,6 +115,7 @@ export default function HomePage() {
     </main>
 
       <Products />
+      <Category />
     </div>
   )
 }
