@@ -3,6 +3,8 @@ import Hero from '@/components/shared/hero'
 import CategoriesCard from '@/components/home/categories-card'
 import { v4 as uuidv4 } from 'uuid';
 import Products from "@/components/product/NewArrivalsSection"
+import Stats from '@/components/Stats';
+import Hero2 from '@/components/Hero2';
 
 
 let categories = [
@@ -69,6 +71,8 @@ export default function HomePage() {
         ))}
       </section>
       <Products />
+      <Stats />
+      <Hero2 />
     </div>
   )
 }
