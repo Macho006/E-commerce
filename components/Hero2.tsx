@@ -25,16 +25,19 @@ const Hero2 = () => {
             </div>
 
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-                <div className="z-10">
+                <div className="z-10 text-center lg:text-left">
                     <h1 className="text-4xl md:text-5xl lg:text-12 font-bold text-[#0F1113] mb-8 leading-tight">
                         <span className="text-[#FF5959]">Экономьте</span> свое время <br />
                         и получайте <span className="text-[#FF5959]">максимум</span> <br />
                         от ежедневных покупок
                     </h1>
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                         <Link href="#" className="bg-black text-white px-6 py-3 rounded-xl flex items-center gap-3 hover:opacity-90 transition">
-                            <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
-                                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                            <svg viewBox="0 0 24 24" className="w-6 h-6">
+                                <path d="M3.84 2.15C3.34 2.39 3 2.91 3 3.5V20.5C3 21.09 3.34 21.6 3.84 21.85L13.69 12 3.84 2.15Z" fill="#2196F3" />
+                                <path d="M16.81 15.12L14.54 12.85 13.69 12 3.84 21.85L16.81 15.12Z" fill="#EA4335" />
+                                <path d="M16.81 8.88L3.84 2.15 13.69 12 14.54 11.15 16.81 8.88Z" fill="#34A853" />
+                                <path d="M20.16 10.81L16.81 8.88 14.54 11.15 14.54 12.85 16.81 15.12 20.16 13.19C20.53 12.92 20.75 12.5 20.75 12C20.75 11.5 20.5 11.08 20.16 10.81Z" fill="#FBBC04" />
                             </svg>
                             <div className="text-left">
                                 <div className="text-[10px] uppercase tracking-wider">Доступно в</div>
@@ -53,14 +56,25 @@ const Hero2 = () => {
                     </div>
                 </div>
 
-                <div className="relative flex justify-center lg:justify-end ">
-                    <Image
-                        src="/hero.png"
-                        alt="App Screenshot"
-                        width={300}
-                        height={600}
-                        className="w-full h-auto max-w-[300px]"
-                    />
+                <div className="relative flex justify-center lg:justify-end order-first lg:order-last">
+                    <div className="relative w-full max-w-[300px] h-[600px] flex items-center justify-center">
+                        {/* Back Phone (Smaller & Lower) */}
+                        <Image
+                            src="/hero.png"
+                            alt="App Screenshot Back"
+                            width={300}
+                            height={600}
+                            className="absolute top-12 -right-8 w-full max-w-[260px] h-auto opacity-70 z-0 rounded-[40px] shadow-lg rotate-6 filter brightness-90"
+                        />
+                        {/* Front Phone (Higher & Front) */}
+                        <Image
+                            src="/hero.png"
+                            alt="App Screenshot Front"
+                            width={300}
+                            height={600}
+                            className="relative top-0 w-full max-w-[280px] h-auto z-10 rounded-[40px] shadow-2xl border-4 border-white/20"
+                        />
+                    </div>
                 </div>
             </div>
 

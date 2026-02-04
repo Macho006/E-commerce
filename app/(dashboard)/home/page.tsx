@@ -62,25 +62,25 @@ const products = [
   {
     title: "Review of outdated smartphones",
     description: "Lorem ipsum dolor sit amet consectetur. Rhoncus risus a viverra enim nunc.",
-    imageSrc: "/images/phone.jpg",
+    imageSrc: "/17promax.png",
     link: "#",
   },
   {
     title: "Review of desktop computers",
     description: "Lorem ipsum dolor sit amet consectetur. Rhoncus risus a viverra enim nunc.",
-    imageSrc: "/images/desktop.jpg",
+    imageSrc: "/laptop.svg",
     link: "#",
   },
   {
     title: "Review of Marshall amplifiers",
     description: "Lorem ipsum dolor sit amet consectetur. Rhoncus risus a viverra enim nunc.",
-    imageSrc: "/images/amp.jpg",
+    imageSrc: "/jbl.svg",
     link: "#",
   },
   {
     title: "Review of headphones",
     description: "Lorem ipsum dolor sit amet consectetur. Rhoncus risus a viverra enim nunc.",
-    imageSrc: "/images/headphones.jpg",
+    imageSrc: "/naushnik.svg",
     link: "#",
   },
 ];
@@ -101,7 +101,7 @@ export default function HomePage() {
           />
         ))}
       </section>
-      <main className="max-w-6xl mx-auto px-4 py-10">
+      <main className="w-full mx-auto px-4 py-10">
         <h1 className="text-2xl font-bold mb-6">Reviews</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
@@ -113,13 +113,13 @@ export default function HomePage() {
           <a href="#" className="text-blue-600 hover:underline">To all reviews &gt;</a>
         </div>
 
+        <Products />
+        <Stats />
+        <Hero2 />
+        <Category />
+
         <Footer />
       </main>
-
-      <Products />
-      <Stats />
-      <Hero2 />
-      <Category />
     </div>
   )
 }
