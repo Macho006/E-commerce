@@ -15,7 +15,7 @@ type Props = {
 
 export function ProductSort({ value, onChange }: Props) {
   return (
-    <Select value={value} onValueChange={onChange}>
+    <Select value={value} onValueChange={(val) => val && onChange(val)}>
       <SelectTrigger className="w-[220px] bg-white/80 backdrop-blur-sm">
         <SelectValue placeholder="Сортировать" />
       </SelectTrigger>
