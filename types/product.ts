@@ -1,3 +1,20 @@
+import { ReactNode } from "react";
+
+// 1. Универсальный тип для одной строки характеристики
+export interface SpecItem {
+  label: string;
+  value: string | number | ReactNode; // Поддержка текста, чисел и JSX
+}
+
+// 2. Группировка детальных характеристик
+export interface DetailedSpecs {
+  factory?: SpecItem[]; // Опционально, т.к. может не быть у некоторых товаров
+  screen?: SpecItem[];
+  camera?: SpecItem[];
+  // Можно добавлять другие группы: battery, processor и т.д.
+}
+
+// Существующие интерфейсы...
 export interface Rating {
   expert_score: number;
   user_score: number;
@@ -16,6 +33,7 @@ export interface Specifications {
   charging: string;
 }
 
+// 3. Обновленный Product
 export interface Product {
   id: string;
   title: string;
@@ -24,12 +42,14 @@ export interface Product {
   attributes: Attribute[];
   price: number;
   colors: string[];
+  image: string;
+  imagesByColor: Record<string, string[]>;
   storage_options: string[];
-  specifications: Specifications;
+  specifications: Specifications; // Краткие спеки (для карточки)
+  detailed_specs?: DetailedSpecs; // Новое поле: Полные спеки (для детальной страницы)
   description: string;
   category: string;
   discount?: number;
-  image: string;
   isNew?: boolean;
 }
 

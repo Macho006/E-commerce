@@ -1,10 +1,10 @@
-import Image from "next/image"
-import { Heart, BarChart2, ChevronDown } from "lucide-react"
-import { Product } from "@/types/product"
+import Image from "next/image";
+import { Heart, BarChart2, ChevronDown } from "lucide-react";
+import { Product } from "@/types/product";
 
 type Props = {
-  product: Product
-}
+  product: Product;
+};
 
 export function ProductCard({ product }: Props) {
   return (
@@ -28,15 +28,20 @@ export function ProductCard({ product }: Props) {
 
       {/* Narx va Tugmalar - Har doim pastda turishi uchun */}
       <div className="mt-4">
-
         <div className="flex items-end justify-between">
           <div className="text-[18px] font-bold text-gray-900">
             <div className="flex items-center gap-2">
-              <span className="text-[16px] text-[#7E8794] font-normal leading-5 tracking-[0%]">Цена</span>
+              <span className="text-[16px] text-[#7E8794] font-normal leading-5 tracking-[0%]">
+                Цена
+              </span>
               {product.discount && (
                 <div className="flex items-center text-emerald-500 font-medium text-xs">
-                  <span className="flex items-center cursor-pointer
-                  "><ChevronDown size={18} /> {product.discount}%</span>
+                  <span
+                    className="flex items-center cursor-pointer
+                  "
+                  >
+                    <ChevronDown size={18} /> {product.discount}%
+                  </span>
                 </div>
               )}
             </div>
@@ -54,5 +59,5 @@ export function ProductCard({ product }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
