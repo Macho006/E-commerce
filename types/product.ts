@@ -1,3 +1,15 @@
+
+export interface SpecItem {
+  label: string;
+  value: string | number;
+}
+
+export interface DetailedSpecs {
+  factory?: SpecItem[];
+  screen?: SpecItem[];
+  camera?: SpecItem[];
+}
+
 export interface Rating {
   expert_score: number;
   user_score: number;
@@ -24,12 +36,14 @@ export interface Product {
   attributes: Attribute[];
   price: number;
   colors: string[];
+  image: string;
+  imagesByColor: Record<string, string[]>;
   storage_options: string[];
   specifications: Specifications;
+  detailed_specs?: DetailedSpecs;
   description: string;
   category: string;
   discount?: number;
-  image: string;
   isNew?: boolean;
 }
 

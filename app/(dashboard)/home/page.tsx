@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Footer } from "@/components/shared/Footer";
 import Products from "@/components/product/NewArrivalsSection"
+import Stats from '@/components/Stats';
+import Hero2 from '@/components/Hero2';
+import Category from '@/components/category/page';
 
 
 let categories = [

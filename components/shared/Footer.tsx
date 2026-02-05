@@ -1,4 +1,3 @@
-// components/shared/Footer.tsx
 import Link from "next/link";
 import Image from "next/image"; // Import Image from next/image for better optimization
 import { Facebook, Instagram, Send, Youtube } from "lucide-react"; // Using standard icons
