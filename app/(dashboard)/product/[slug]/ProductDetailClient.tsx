@@ -4,8 +4,16 @@ import { Button } from "@/components/ui/button";
 import { ChartAreaLinear } from "@/components/chartarea";
 import { CustomBreadcrumb } from "@/components/breadcrumb";
 import { AccordionCard } from "@/components/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/product";
+import Image from "next/image";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
@@ -25,33 +33,66 @@ export default function ProductDetail({ product }: { product: Product }) {
         <div className="space-y-5">
           {/* Gallery */}
           <div>
-            <div className="bg-gray-100 rounded-xl">
-              <img
+            <div className="bg-gray-100 rounded-xl w-full h-[710px] relative overflow-hidden">
+              <Image
+                fill
                 key={activeImageIndex}
                 src={colorImages[activeImageIndex]}
-                className="object-contain w-full max-h-[710px] rounded-2xl transition-opacity duration-[2s] animate-in fade-in"
+                className="object-contain transition-opacity duration-[2s] animate-in fade-in"
                 alt={product.title}
+                sizes="(max-width: 768px) 100vw, 710px"
               />
             </div>
-            <div className="grid grid-cols-3 w-fit gap-5 mt-5">
-              {colorImages.map((img, index) => (
-                <div
-                  key={index}
-                  onClick={() => setActiveImageIndex(index)}
-                  className={`bg-gray-50 max-h-[200px] rounded-lg cursor-pointer border-2 transition-all ${
-                    activeImageIndex === index
+            {colorImages.length > 3 ? (
+              <Carousel className="w-full mt-5">
+                <CarouselContent className="relative">
+                  {colorImages.map((img, index) => (
+                    <CarouselItem key={index} className="basis-1/3">
+                      <div
+                        onClick={() => setActiveImageIndex(index)}
+                        className={`bg-gray-50 flex items-center justify-center h-[200px] rounded-lg cursor-pointer border-2 transition-all ${activeImageIndex === index
+                          ? "border-gray-200"
+                          : "border-transparent"
+                          }`}
+                      >
+                        <Image
+                          width={200}
+                          height={200}
+                          src={img}
+                          className="rounded-lg object-contain h-full"
+                          alt="thumbnail"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-2 pointer-events-none">
+                  <CarouselPrevious className="static translate-x-0 pointer-events-auto" />
+                  <CarouselNext className="static translate-x-0 pointer-events-auto" />
+                </div>
+              </Carousel>
+            ) : (
+              <div className="grid grid-cols-3 w-fit gap-5 mt-5">
+                {colorImages.map((img, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setActiveImageIndex(index)}
+                    className={`bg-gray-50 flex items-center h-[200px] rounded-lg cursor-pointer border-2 transition-all ${activeImageIndex === index
                       ? "border-gray-200"
                       : "border-transparent"
-                  }`}
-                >
-                  <img
-                    src={img}
-                    className="object-contain w-full h-full rounded-lg"
-                    alt="thumbnail"
-                  />
-                </div>
-              ))}
-            </div>
+                      }`}
+                  >
+                    <Image
+                      width={200}
+                      height={200}
+                      src={img}
+                      className="rounded-lg object-contain h-full"
+                      alt="thumbnail"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <AccordionCard product={product} />
           <div className="border border-gray-100 rounded-xl p-5 space-y-3">
@@ -138,7 +179,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                   currency: "RUB",
                 })}{" "}
               </p>
-              <img className="h-4" src="/restore.png" alt="re:store" />
+              <Image width={20} height={20} src="/restore.png" alt="re:store" />
             </div>
             <p className="text-green-500 mt-3">Доставка беслатная</p>
             <div className="flex items-center gap-3 mt-3">
@@ -166,11 +207,10 @@ export default function ProductDetail({ product }: { product: Product }) {
                   <button
                     key={color}
                     onClick={() => setSelectedColor(color)}
-                    className={`border p-1 rounded-lg ${
-                      selectedColor === color
-                        ? "border-primary"
-                        : "border-transparent"
-                    }`}
+                    className={`border p-1 rounded-lg ${selectedColor === color
+                      ? "border-primary"
+                      : "border-transparent"
+                      }`}
                   >
                     <div
                       className="size-6 rounded-sm"
