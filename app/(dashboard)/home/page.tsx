@@ -113,11 +113,10 @@ export default function HomePage() {
           <a href="#" className="text-blue-600 hover:underline">To all reviews &gt;</a>
         </div>
 
-        <Products />
         <Stats />
         <Hero2 />
         <Category />
-
+        <Products />
         <Footer />
       </main>
     </div>
