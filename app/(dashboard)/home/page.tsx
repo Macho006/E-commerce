@@ -79,6 +79,9 @@ export default function HomePage() {
       </section>
 
       <Products />
+      <Stats />
+      <Hero2 />
+      <Category />
 
       <ReviewsSection />
     </div>
