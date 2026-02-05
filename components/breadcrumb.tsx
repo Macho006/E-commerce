@@ -7,8 +7,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Product } from "@/types/product";
 
-export function CustomBreadcrumb() {
+export function CustomBreadcrumb({ product }: { product: Product }) {
+  if (!product) return null;
+
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -22,12 +25,12 @@ export function CustomBreadcrumb() {
         <BreadcrumbItem>
           <BreadcrumbLink
             className="text-gray-300"
-            render={<Link href="/phones">Смартфоны</Link>}
+            render={<Link href="/phones">{product.category}</Link>}
           />
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>iPhone 17 Pro Max</BreadcrumbPage>
+          <BreadcrumbPage>{product.title}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

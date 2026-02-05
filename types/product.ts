@@ -28,8 +28,24 @@ export interface Specifications {
   charging: string;
 }
 
+export interface Users {
+  id: string;
+  name: string;
+}
+
+export interface Feedback {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  timestamp: string;
+  stars: number;
+  user: Users;
+}
+
 export interface Product {
   id: string;
+  brand: string;
   title: string;
   slug: string;
   rating: Rating;
@@ -45,6 +61,7 @@ export interface Product {
   category: string;
   discount?: number;
   isNew?: boolean;
+  feedbacks?: Feedback[];
 }
 
 export type ProductList = Product[];

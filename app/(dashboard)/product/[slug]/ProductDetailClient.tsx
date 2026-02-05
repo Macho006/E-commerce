@@ -3,7 +3,8 @@ import { ChartLine, ChartNoAxesColumn, Crown, Heart, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ChartAreaLinear } from "@/components/chartarea";
 import { CustomBreadcrumb } from "@/components/breadcrumb";
-import { AccordionCard } from "@/components/accordion";
+import { AccordionCard } from "@/components/AccordionCard";
+import { ProductFeedbacks } from "@/components/ProductFeedbacks";
 import {
   Carousel,
   CarouselContent,
@@ -14,6 +15,7 @@ import {
 import { useEffect, useState } from "react";
 import { Product } from "@/types/product";
 import Image from "next/image";
+import ReviewsSection from "@/components/home/reviews-section";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
@@ -28,7 +30,7 @@ export default function ProductDetail({ product }: { product: Product }) {
 
   return (
     <div className="container mx-auto mt-4 px-3">
-      <CustomBreadcrumb />
+      <CustomBreadcrumb product={product} />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 auto-rows-min container mx-auto my-8">
         <div className="space-y-5">
           {/* Gallery */}
@@ -44,15 +46,15 @@ export default function ProductDetail({ product }: { product: Product }) {
               />
             </div>
             {colorImages.length > 3 ? (
-              <Carousel className="w-full mt-5">
+              <Carousel opts={{ align: "start" }} className="w-full mt-5">
                 <CarouselContent className="relative">
                   {colorImages.map((img, index) => (
                     <CarouselItem key={index} className="basis-1/3">
                       <div
                         onClick={() => setActiveImageIndex(index)}
                         className={`bg-gray-50 flex items-center justify-center h-[200px] rounded-lg cursor-pointer border-2 transition-all ${activeImageIndex === index
-                          ? "border-gray-200"
-                          : "border-transparent"
+                            ? "border-gray-200"
+                            : "border-transparent"
                           }`}
                       >
                         <Image
@@ -78,8 +80,8 @@ export default function ProductDetail({ product }: { product: Product }) {
                     key={index}
                     onClick={() => setActiveImageIndex(index)}
                     className={`bg-gray-50 flex items-center h-[200px] rounded-lg cursor-pointer border-2 transition-all ${activeImageIndex === index
-                      ? "border-gray-200"
-                      : "border-transparent"
+                        ? "border-gray-200"
+                        : "border-transparent"
                       }`}
                   >
                     <Image
@@ -96,7 +98,6 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
           <AccordionCard product={product} />
           <div className="border border-gray-100 rounded-xl p-5 space-y-3">
-            {" "}
             <h3 className="font-semibold text-2xl">Описание</h3>
             <p>{product.description}</p>
           </div>
@@ -105,6 +106,9 @@ export default function ProductDetail({ product }: { product: Product }) {
         <div className="space-y-5">
           {/* About*/}
           <div className="border border-gray-100 rounded-xl p-5">
+            <div className="text-sm font-medium text-gray-400 mb-1 uppercase tracking-wider">
+              {product.brand}
+            </div>
             <h1 className="font-semibold text-2xl">{product.title}</h1>
             <div className="block items-center xl:flex space-y-5 xl:space-y-0 gap-5 mt-3">
               <div className="flex gap-1 text-green-500 text-sm bg-gray-100 px-4 py-3.5 w-fit rounded-xl">
@@ -208,8 +212,8 @@ export default function ProductDetail({ product }: { product: Product }) {
                     key={color}
                     onClick={() => setSelectedColor(color)}
                     className={`border p-1 rounded-lg ${selectedColor === color
-                      ? "border-primary"
-                      : "border-transparent"
+                        ? "border-primary"
+                        : "border-transparent"
                       }`}
                   >
                     <div
@@ -253,6 +257,8 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
         </div>
       </div>
+      <ReviewsSection />
+      <ProductFeedbacks product={product} />
     </div>
   );
 }
