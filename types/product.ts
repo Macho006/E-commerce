@@ -1,7 +1,11 @@
-
 export interface SpecItem {
   label: string;
   value: string | number;
+}
+
+export interface Brand {
+  id: string;
+  name: string;
 }
 
 export interface DetailedSpecs {
