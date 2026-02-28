@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto, Forum } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/shared/Footer";
+import Navbar from '@/components/shared/navbar'
+
 
 const roboto = Roboto({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -35,7 +38,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${forum.variable} antialiased`}
       >
-        {children}
+        <>
+          <Navbar />
+
+          <main>
+            {children}
+          </main>
+
+          <Footer />
+        </>
       </body>
     </html>
   );

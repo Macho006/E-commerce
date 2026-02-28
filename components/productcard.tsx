@@ -1,5 +1,4 @@
 import { Heart, BarChart2 } from 'lucide-react';
-import Iphone from '@/public/Iphone.svg';
 
 
 export default function ProductCard() {
@@ -28,8 +27,8 @@ export default function ProductCard() {
                     Apple iPhone 13 Pro Max 256 ГБ серый
                 </h3>
                 <div className="relative w-32 h-32 md:w-40 md:h-40">
-                    <div className="w-full h-full bg-gradient-to-b from-gray-100 to-gray-200 rounded-xl flex items-center justify-center text-4xl">
-                        <img src={Iphone.src} alt="iPhone" />
+                    <div className="w-full h-full bg-gradient-to-b from-gray-100 to-gray-200 rounded-3xl flex items-center justify-center p-6">
+                        <img src="/Iphone.svg" alt="iPhone" className="w-full h-full object-contain" />
                     </div>
                 </div>
             </div>
